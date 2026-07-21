@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anaqati — Redefine Your Elegance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F1EA;
+    --ivory:#FFFCF7;
+    --espresso:#211C18;
+    --espresso-soft:#3A332D;
+    --gold:#B6884F;
+    --gold-soft:#D8B98A;
+    --rose:#C98F86;
+    --blush:#EFDCD3;
+    --line: rgba(33,28,24,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--espresso);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Bodoni Moda', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  .eyebrow{
+    font-family:'Jost', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.28em;
+    font-size:0.72rem;
+    color:var(--gold);
+    font-weight:500;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .arabic{
+    font-family:'Aref Ruqaa', serif;
+  }
+
+  /* ---------- Spine ---------- */
+  .spine{
+    position:fixed;
+    left:0; top:0; bottom:0;
+    width:34px;
+    background:var(--espresso);
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .spine span{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    color:var(--cream);
+    letter-spacing:0.35em;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    font-weight:500;
+    white-space:nowrap;
+  }
+  .spine .dot{
+    color:var(--gold);
+  }
+  body{ padding-left:34px; }
+  @media(max-width:680px){
+    .spine{display:none;}
+    body{padding-left:0;}
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(247,241,234,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 5vw;
+  }
+  .logo{
+    font-family:'Bodoni Moda', serif;
+    font-size:1.5rem;
+    letter-spacing:0.04em;
+  }
+  .logo .ar{
+    font-family:'Aref Ruqaa', serif;
+    font-size:1rem;
+    color:var(--gold);
+    margin-left:10px;
+  }
+  .navlinks{
+    display:flex; gap:38px;
+    font-size:0.85rem;
+    letter-spacing:0.04em;
+  }
+  .navlinks a{position:relative; padding-bottom:4px;}
+  .navlinks a::after{
+    content:''; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background:var(--gold); transform:scaleX(0); transform-origin:right;
+    transition:transform .35s ease;
+  }
+  .navlinks a:hover::after{transform:scaleX(1); transform-origin:left;}
+  .nav-cta{
+    border:1px solid var(--espresso);
+    padding:9px 22px;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    transition:.3s;
+  }
+  .nav-cta:hover{background:var(--espresso); color:var(--cream);}
+  @media(max-width:900px){ .navlinks{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    min-height:92vh;
+    position:relative;
+  }
+  .hero-text{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:0 6vw;
+    position:relative;
+    z-index:2;
+  }
+  .hero-watermark{
+    position:absolute;
+    font-family:'Aref Ruqaa', serif;
+    font-size:min(40vw, 480px);
+    color:var(--gold);
+    opacity:0.07;
+    top:50%; left:-4%;
+    transform:translateY(-50%);
+    z-index:0;
+    pointer-events:none;
+    line-height:1;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.6vw, 4.6rem);
+    line-height:1.05;
+    margin:18px 0 22px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--gold);
+  }
+  .hero p.sub{
+    font-size:1.08rem;
+    line-height:1.75;
+    color:var(--espresso-soft);
+    max-width:480px;
+    margin-bottom:34px;
+    font-weight:300;
+  }
+  .cta-row{display:flex; gap:18px; align-items:center; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--espresso);
+    color:var(--cream);
+    padding:16px 34px;
+    font-size:0.82rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    transition:.35s;
+    border:1px solid var(--espresso);
+  }
+  .btn-primary:hover{background:transparent; color:var(--espresso);}
+  .btn-ghost{
+    padding:16px 28px;
+    font-size:0.82rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--espresso);
+    transition:.3s;
+  }
+  .btn-ghost:hover{color:var(--gold); border-color:var(--gold);}
+  .hero-img{
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-img img{
+    width:100%; height:100%; object-fit:cover;
+    object-position: center 18%;
+    filter:saturate(0.92) contrast(1.02);
+  }
+  .hero-img::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, var(--cream) 0%, rgba(247,241,234,0) 12%);
+  }
+  .hero-tagline-box{
+    position:absolute; bottom:36px; right:36px;
+    background:var(--ivory);
+    padding:18px 24px;
+    border-left:3px solid var(--gold);
+    max-width:230px;
+    font-size:0.78rem;
+    line-height:1.6;
+    color:var(--espresso-soft);
+    box-shadow:0 10px 30px rgba(33,28,24,0.12);
+  }
+  .designer-credit{
+    position:absolute; top:28px; left:28px;
+    background:rgba(33,28,24,0.55);
+    backdrop-filter:blur(4px);
+    color:var(--cream);
+    padding:9px 18px;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    border:1px solid rgba(247,241,234,0.3);
+  }
+  .designer-credit span{
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    color:var(--gold-soft);
+  }
+  @media(max-width:900px){ .designer-credit{display:none;} }
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr; min-height:auto;}
+    .hero-img{height:60vh; order:-1;}
+    .hero-text{padding:54px 7vw;}
+    .hero-tagline-box{display:none;}
+  }
+
+  /* ---------- Section shells ---------- */
+  section{padding:110px 6vw;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 64px;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 3.4vw, 2.8rem);
+    margin-top:14px;
+  }
+  .section-head p{
+    margin-top:16px;
+    color:var(--espresso-soft);
+    font-size:1rem;
+    line-height:1.7;
+  }
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- Value props ---------- */
+  .values{background:var(--ivory); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .value-card{
+    background:var(--ivory);
+    padding:46px 30px;
+    text-align:center;
+  }
+  .value-num{
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    color:var(--gold-soft);
+    font-size:1rem;
+    margin-bottom:18px;
+  }
+  .value-card h3{
+    font-size:1.18rem;
+    margin-bottom:12px;
+  }
+  .value-card p{
+    font-size:0.9rem;
+    color:var(--espresso-soft);
+    line-height:1.65;
+  }
+  @media(max-width:900px){ .value-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .value-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Collections ---------- */
+  .collections{max-width:1280px; margin:0 auto;}
+  .collection-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+    margin-bottom:110px;
+  }
+  .collection-row.rev .col-img{order:2;}
+  .collection-row.rev .col-text{order:1;}
+  .col-img{position:relative; overflow:hidden; aspect-ratio:4/5;}
+  .col-img img{width:100%; height:100%; object-fit:cover; transition:transform .8s ease;}
+  .col-img:hover img{transform:scale(1.05);}
+  .col-tag{
+    position:absolute; top:20px; left:20px;
+    background:var(--ivory);
+    padding:8px 16px;
+    font-size:0.7rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+  }
+  .col-text h3{font-size:clamp(1.6rem,2.6vw,2.2rem); margin-bottom:18px;}
+  .col-text .poetic{
+    font-style:italic;
+    color:var(--gold);
+    font-family:'Bodoni Moda', serif;
+    font-size:1.05rem;
+    margin-bottom:18px;
+  }
+  .col-text p.desc{
+    color:var(--espresso-soft);
+    line-height:1.8;
+    margin-bottom:26px;
+    max-width:420px;
+  }
+  .col-link{
+    font-size:0.8rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--espresso);
+    padding-bottom:4px;
+    transition:.3s;
+  }
+  .col-link:hover{color:var(--gold); border-color:var(--gold);}
+  @media(max-width:860px){
+    .collection-row, .collection-row.rev{grid-template-columns:1fr; gap:28px;}
+    .collection-row.rev .col-img, .collection-row.rev .col-text{order:initial;}
+    .collection-row{margin-bottom:70px;}
+  }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{background:var(--espresso); color:var(--cream);}
+  .testimonials .section-head p{color:rgba(247,241,234,0.65);}
+  .testimonials .eyebrow{color:var(--gold-soft);}
+  .t-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:rgba(247,241,234,0.14);
+    max-width:1180px; margin:0 auto;
+  }
+  .t-card{
+    background:var(--espresso);
+    padding:42px 34px;
+  }
+  .stars{color:var(--gold-soft); letter-spacing:3px; margin-bottom:20px; font-size:0.95rem;}
+  .t-card p.quote{
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    line-height:1.75;
+    font-size:1.02rem;
+    margin-bottom:26px;
+    color:rgba(247,241,234,0.92);
+  }
+  .t-author{font-size:0.82rem; letter-spacing:0.05em; color:var(--gold-soft);}
+  @media(max-width:860px){ .t-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Offer ---------- */
+  .offer{
+    background:linear-gradient(120deg, var(--blush), var(--cream));
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .offer-watermark{
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    font-family:'Aref Ruqaa', serif;
+    font-size:26vw;
+    color:var(--gold);
+    opacity:0.06;
+    white-space:nowrap;
+  }
+  .offer-inner{position:relative; z-index:1; max-width:620px; margin:0 auto;}
+  .offer h2{font-size:clamp(2.1rem,4vw,3.2rem); margin:16px 0 18px;}
+  .offer p{color:var(--espresso-soft); font-size:1.05rem; line-height:1.7; margin-bottom:14px;}
+  .code-box{
+    display:inline-block;
+    border:1px dashed var(--gold);
+    padding:12px 28px;
+    font-family:'Bodoni Moda', serif;
+    letter-spacing:0.15em;
+    font-size:1.05rem;
+    margin:18px 0 30px;
+    background:rgba(255,252,247,0.6);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--espresso);
+    color:rgba(247,241,234,0.75);
+    padding:80px 6vw 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:50px;
+    max-width:1180px;
+    margin:0 auto 60px;
+  }
+  .footer-brand .logo{color:var(--cream);}
+  .footer-brand p{
+    margin-top:18px; font-size:0.88rem; line-height:1.7;
+    color:rgba(247,241,234,0.55); max-width:280px;
+  }
+  .footer-col h4{
+    font-family:'Jost'; font-size:0.78rem; letter-spacing:0.15em;
+    text-transform:uppercase; color:var(--gold-soft); margin-bottom:20px;
+  }
+  .footer-col a{
+    display:block; font-size:0.88rem; margin-bottom:13px;
+    color:rgba(247,241,234,0.72); transition:.25s;
+  }
+  .footer-col a:hover{color:var(--gold-soft);}
+  .footer-bottom{
+    max-width:1180px; margin:0 auto;
+    border-top:1px solid rgba(247,241,234,0.14);
+    padding-top:26px;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:14px;
+    font-size:0.78rem;
+    color:rgba(247,241,234,0.45);
+  }
+  .payments{display:flex; gap:14px; font-size:0.74rem; letter-spacing:0.05em;}
+  .payments span{border:1px solid rgba(247,241,234,0.25); padding:5px 10px;}
+  @media(max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr; gap:40px;} }
+  @media(max-width:520px){ .footer-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<div class="spine"><span>ANAQATI <span class="dot">●</span> MY ELEGANCE <span class="dot">●</span> ANAQATI <span class="dot">●</span> MY ELEGANCE</span></div>
+
+<nav>
+  <div class="logo">ANAQATI <span class="ar arabic">أناقتي</span></div>
+  <div class="navlinks">
+    <a href="#why">Why Us</a>
+    <a href="#collections">Collections</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#offer">Offer</a>
+  </div>
+  <a href="#offer" class="nav-cta">Shop Now</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-text">
+    <div class="hero-watermark arabic">أناقتي</div>
+    <span class="eyebrow">Modern Womenswear · Premium Quality</span>
+    <h1>Redefine Your<br><em>Elegance</em></h1>
+    <p class="sub">Thoughtfully designed pieces that move with you — from sunlit mornings to evenings that linger. Premium fabrics, timeless silhouettes, crafted for the woman who knows her worth.</p>
+    <div class="cta-row">
+      <a href="#collections" class="btn-primary">Explore the New Collection</a>
+      <a href="#reviews" class="btn-ghost">Shop Best Sellers</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1530124555968-dff1dbc4b9af?w=1400&q=80&auto=format&fit=crop" alt="Woman wearing an elegant outfit by a beige wall">
+    <div class="hero-tagline-box">"Anaqati" means <em>my elegance</em> — a quiet promise woven into every piece we make.</div>
+    <div class="designer-credit">Concept &amp; Design — <span>Eman Ahmed</span></div>
+  </div>
+</header>
+
+<section class="values" id="why">
+  <div class="section-head reveal">
+    <span class="eyebrow">Why Shop With Us</span>
+    <h2>The Anaqati Difference</h2>
+    <p>Every detail, from fabric to fit, is chosen with one goal — to make you feel as good as you look.</p>
+  </div>
+  <div class="value-grid">
+    <div class="value-card reveal">
+      <div class="value-num">01</div>
+      <h3>Premium Fabrics</h3>
+      <p>Hand-selected materials that feel as luxurious as they look — designed to last beyond a season.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-num">02</div>
+      <h3>Exclusive Designs</h3>
+      <p>Limited-run pieces you won't find anywhere else. Stand out, never blend in.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-num">03</div>
+      <h3>Fast Delivery</h3>
+      <p>From our hands to your doorstep — quickly and carefully, every time.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-num">04</div>
+      <h3>Easy Returns</h3>
+      <p>Love it or send it back. Free returns within 14 days, no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<section class="collections" id="collections">
+  <div class="section-head reveal">
+    <span class="eyebrow">Featured Collections</span>
+    <h2>Find Your Moment</h2>
+    <p>Three wardrobes, one woman — effortless, radiant, and unmistakably in command.</p>
+  </div>
+
+  <div class="collection-row reveal">
+    <div class="col-img">
+      <span class="col-tag">Chic Casual</span>
+      <img src="https://images.unsplash.com/photo-1553026896-9bdf9fb59609?w=1000&q=80&auto=format&fit=crop" alt="Woman in a soft beige sweater, chic casual style">
+    </div>
+    <div class="col-text">
+      <p class="poetic">For the days that ask for ease, without asking you to compromise.</p>
+      <h3>Chic Casual</h3>
+      <p class="desc">Soft fabrics, effortless cuts, and quiet confidence — designed for coffee runs, weekend wanderings, and every ordinary moment you make extraordinary.</p>
+      <a href="#" class="col-link">Shop Chic Casual →</a>
+    </div>
+  </div>
+
+  <div class="collection-row rev reveal">
+    <div class="col-img">
+      <span class="col-tag">Evening Dresses</span>
+      <img src="https://images.unsplash.com/photo-1589212987511-4a924cb9d8ac?w=1000&q=80&auto=format&fit=crop" alt="Woman in an elegant black evening dress">
+    </div>
+    <div class="col-text">
+      <p class="poetic">For the nights that remember you.</p>
+      <h3>Elegant Evening Dresses</h3>
+      <p class="desc">Silhouettes that catch the light and hold a room. Designed for the woman who doesn't just attend — she arrives.</p>
+      <a href="#" class="col-link">Shop Evening Dresses →</a>
+    </div>
+  </div>
+
+  <div class="collection-row reveal" style="margin-bottom:0;">
+    <div class="col-img">
+      <span class="col-tag">Workwear</span>
+      <img src="https://images.unsplash.com/photo-1762505465530-0584b9771329?w=1000&q=80&auto=format&fit=crop" alt="Woman in a sophisticated black blazer, workwear style">
+    </div>
+    <div class="col-text">
+      <p class="poetic">Power, tailored.</p>
+      <h3>Sophisticated Workwear</h3>
+      <p class="desc">Sharp lines, soft confidence. Built for boardrooms and big decisions, our Workwear Collection moves as fast as your ambition.</p>
+      <a href="#" class="col-link">Shop Workwear →</a>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="section-head reveal">
+    <span class="eyebrow">Social Proof</span>
+    <h2>Loved by Women Like You</h2>
+    <p>Real words from women who found their elegance with Anaqati.</p>
+  </div>
+  <div class="t-grid">
+    <div class="t-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"I've never felt more put-together. The fabric quality is unreal — it doesn't feel like fast fashion at all. I get compliments every time I wear my Anaqati pieces."</p>
+      <div class="t-author">— Layla M., Dubai</div>
+    </div>
+    <div class="t-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"The fit is exactly as described, which never happens with online shopping. Customer service helped me pick the right size and it arrived in 3 days. Officially obsessed."</p>
+      <div class="t-author">— Noor A., Riyadh</div>
+    </div>
+    <div class="t-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"I bought one dress to 'try it out' and ended up ordering four more pieces within a month. Anaqati just gets it — elegant, comfortable, and never boring."</p>
+      <div class="t-author">— Sarah K., Amman</div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="offer">
+  <div class="offer-watermark arabic">أناقتي</div>
+  <div class="offer-inner reveal">
+    <span class="eyebrow">Limited-Time Offer</span>
+    <h2>15% Off Your First Order</h2>
+    <p>Plus free shipping on every order, no minimum. New here? This one's on us.</p>
+    <div class="code-box">ANAQATI15</div>
+    <div>
+      <a href="#" class="btn-primary">Claim My Discount</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">ANAQATI</div>
+      <p>My Elegance. Designed for the woman who defines her own. Modern fashion, made with intention.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#">New Arrivals</a>
+      <a href="#">Casual</a>
+      <a href="#">Evening</a>
+      <a href="#">Workwear</a>
+      <a href="#">Sale</a>
+    </div>
+    <div class="footer-col">
+      <h4>Customer Care</h4>
+      <a href="#">Shipping Policy</a>
+      <a href="#">Returns &amp; Exchanges</a>
+      <a href="#">Size Guide</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">Pinterest</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Anaqati. All rights reserved. · Designed by <em style="font-family:'Bodoni Moda', serif; color:var(--gold-soft);">Eman Ahmed</em></span>
+    <div class="payments">
+      <span>Visa</span><span>Mastercard</span><span>Mada</span><span>Apple Pay</span><span>COD</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
